@@ -1,0 +1,1135 @@
+/* ==========================================================================
+   1. CSS Reset & Basic Styles
+   ========================================================================== */
+:root {
+  /* Color Palette - Refined Pink Theme */
+  --primary-color: #E91E63; /* A vibrant pink - good for CTAs, accents */
+  --secondary-color: #FCE4EC; /* Lighter, softer pink for backgrounds or subtle elements */
+  --accent-color: #FFC107; /* A complementary accent - e.g., gold or warm yellow */
+  --text-color-dark: #333333; /* For main text */
+  --text-color-light: #757575; /* For secondary text, descriptions */
+  --background-light: #FFFFFF;
+  --background-soft: #FFF8FA; /* Very light pinkish white for sections */
+  --border-color: #E0E0E0; /* Light grey for borders */
+  --deal-button-bg: #FFC107; /* Yellow for deal button background */
+  --deal-button-text: #333333; /* Dark text for deal button */
+  --deal-content-bg: #FFF0F5; /* Lavender blush / very light pink for deal content background */
+
+
+  /* Fonts */
+  --font-primary: 'Poppins', sans-serif; /* Existing font, good choice */
+  --font-secondary: 'Inter', sans-serif; /* For headings or specific elements if needed */
+
+  /* Spacing */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem;  /* 8px */
+  --spacing-md: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;  /* 24px */
+  --spacing-xl: 2rem;    /* 32px */
+
+  /* Borders & Shadows */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size */
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: darken(var(--primary-color), 10%);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul { list-style: none; }
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: background-color 0.3s ease;
+  border: none; /* Remove default border from buttons */
+}
+button:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+.container {
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ==========================================================================
+   2. Header Styles (`includes/desktopnav.php`, `includes/mobilenav.php`)
+   ========================================================================== */
+
+/* --- Top Bar --- */
+.header-top {
+  background-color: var(--secondary-color);
+  padding: var(--spacing-sm) 0;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.header-top .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-social-container {
+  display: flex;
+  gap: var(--spacing-md);
+}
+.header-social-container .social-link {
+  color: var(--text-color-dark);
+  font-size: 1.1rem;
+}
+.header-social-container .social-link:hover {
+  color: var(--primary-color);
+}
+.header-user-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+.header-user-actions .action-btn {
+  background: none;
+  border: none;
+  color: var(--text-color-dark);
+  font-size: 1.2rem; /* Icon size */
+  position: relative;
+  padding: var(--spacing-xs); /* Add some padding for easier clicking */
+}
+.header-user-actions .action-btn .count {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.header-user-actions .action-btn ion-icon {
+    vertical-align: middle; /* Better align icons */
+}
+.header-user-actions .action-btn a { /* Ensure links inside buttons inherit color */
+    color: inherit;
+}
+.header-user-actions .action-btn a:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Main Header (Logo & Search) --- */
+.header-main {
+  background-color: var(--background-light);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.header-main .container {
+  display: flex;
+  justify-content: space-between; /* This might be overridden by desktopnav.php structure */
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+.header-logo h1 {
+  font-family: var(--font-secondary); /* Example: Use a different font for logo */
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color-dark);
+  margin: 0;
+}
+.header-logo img {
+    max-height: 50px; /* Control logo image height */
+    width: auto;
+}
+
+.header-search-container {
+  background-color: var(--secondary-color); /* Match top bar or make distinct */
+  padding: var(--spacing-sm) 0; /* Reduced padding */
+}
+.search-form {
+  display: flex;
+  max-width: 600px; /* Limit search bar width */
+  margin: 0 auto; /* Center search bar */
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden; /* To contain button within border */
+}
+.search-field {
+  flex-grow: 1;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  outline: none;
+  background-color: var(--background-light);
+}
+.search-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0 var(--spacing-md);
+  font-size: 1.2rem;
+}
+.search-btn:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+/* --- Desktop Navigation Menu --- */
+.desktop-navigation-menu {
+  background-color: var(--background-light);
+  box-shadow: var(--box-shadow-light);
+  padding: var(--spacing-sm) 0;
+}
+.desktop-menu-category-list {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+.desktop-menu-category-list .menu-title {
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-color-dark);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.desktop-menu-category-list .menu-title:hover,
+.desktop-menu-category-list .menu-category > a.active .menu-title { /* For active state */
+  color: var(--primary-color);
+}
+.desktop-menu-category-list .menu-title::after { /* Underline effect */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+.desktop-menu-category-list .menu-title:hover::after,
+.desktop-menu-category-list .menu-category > a.active .menu-title::after {
+  width: 70%;
+}
+
+
+/* --- Mobile Navigation --- */
+.mobile-bottom-navigation {
+  background-color: var(--background-light);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 100; /* Ensure it's above other content */
+}
+.mobile-bottom-navigation .action-btn {
+  font-size: 1.5rem; /* Larger icons for mobile */
+  color: var(--text-color-light);
+  background: none;
+  border: none;
+  position: relative;
+}
+.mobile-bottom-navigation .action-btn .count {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.6rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobile-bottom-navigation .action-btn:hover,
+.mobile-bottom-navigation .action-btn.active { /* Example active state */
+    color: var(--primary-color);
+}
+
+.mobile-navigation-menu {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Initially hidden */
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: var(--background-light);
+  padding: var(--spacing-md);
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 101;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+}
+.mobile-navigation-menu.active {
+  left: 0;
+}
+.mobile-navigation-menu .menu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+.mobile-navigation-menu .menu-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.mobile-navigation-menu .menu-close-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-color-dark);
+}
+.mobile-menu-category-list .menu-category > .menu-title {
+    display: block;
+    padding: var(--spacing-sm) 0;
+    color: var(--text-color-dark);
+    font-weight: 500;
+}
+.mobile-menu-category-list .menu-category > .menu-title:hover {
+    color: var(--primary-color);
+}
+
+/* Overlay for mobile menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* ==========================================================================
+   3. Banner Styles
+   ========================================================================== */
+.banner {
+  margin: var(--spacing-lg) 0;
+}
+.slider-container {
+  display: flex;
+  overflow-x: auto; /* For scrollbar if needed, or use JS for carousel */
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-sm); /* Space for scrollbar */
+}
+.slider-item {
+  min-width: 100%; /* Full width for each banner item */
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--box-shadow-medium);
+}
+.banner-img {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  object-fit: cover;
+}
+.banner-content {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  background-color: rgba(0,0,0,0.5); /* Semi-transparent background for text */
+  color: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  max-width: 90%; /* Prevent text from touching edges */
+}
+.banner-subtitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-xs);
+}
+.banner-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+}
+.banner-text {
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+.banner-text b {
+  font-size: 1.1rem;
+}
+.banner-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block; /* So padding works correctly */
+}
+.banner-btn:hover {
+  background-color: darken(var(--primary-color), 10%);
+  color: white;
+}
+
+/* ==========================================================================
+   4. Product Grid & Showcase Styles
+   ========================================================================== */
+.product-main {
+  padding: var(--spacing-xl) 0;
+}
+.product-main .title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+.product-main .title::after { /* Decorative underline */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: var(--spacing-lg);
+}
+
+.showcase {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-light);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.showcase:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-medium);
+}
+
+.showcase-banner {
+  position: relative;
+  background-color: var(--background-soft); /* Fallback background for images */
+}
+.product-img {
+  width: 100%;
+  height: 280px; /* Consistent image height */
+  object-fit: cover; /* Ensures image covers the area, might crop */
+  transition: transform 0.3s ease;
+}
+.showcase:hover .product-img.default {
+  /* opacity: 0; */ /* Or use transform for a different effect */
+}
+.showcase:hover .product-img.hover {
+  /* opacity: 1; */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+.product-img.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Initially hidden */
+}
+
+.showcase-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  background-color: var(--accent-color);
+  color: var(--text-color-dark);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+}
+.showcase-badge.angle.black {
+  background-color: var(--text-color-dark);
+  color: white;
+}
+
+/* Actions on product cards (wishlist, quick view etc.) - currently not styled much in original */
+.showcase-actions {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  opacity: 0; /* Hidden by default, show on hover */
+  transition: opacity 0.3s ease;
+}
+.showcase:hover .showcase-actions {
+  opacity: 1;
+}
+.showcase-actions .btn-action {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color-dark);
+  border: 1px solid var(--border-color);
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  box-shadow: var(--box-shadow-light);
+}
+.showcase-actions .btn-action:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.showcase-content {
+  padding: var(--spacing-md);
+  text-align: center; /* Center align text */
+}
+.showcase-category {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-xs);
+}
+.showcase-title {
+  font-size: 1rem; /* Slightly larger title */
+  font-weight: 600;
+  color: var(--text-color-dark);
+  margin-bottom: var(--spacing-sm);
+  /* Limit title to 2 lines with ellipsis */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.4em; /* Ensure space for two lines */
+}
+.price-box {
+  display: flex;
+  justify-content: center; /* Center prices */
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.price-box .price {
+  color: var(--primary-color);
+}
+.price-box del {
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+/* ==========================================================================
+   5. "Deal of the Day" Styles (`includes/dealoftheday.php`)
+   ========================================================================== */
+/* ==========================================================================
+   5. "Deal of the Day" Styles (`includes/dealoftheday.php`)
+   ========================================================================== */
+.product-featured {
+  background-color: var(--secondary-color); /* Light pink background for the whole section */
+  padding: var(--spacing-xl) 0;
+  margin: var(--spacing-lg) 0;
+}
+
+.product-featured .title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-color-dark);
+}
+
+.showcase-wrapper.has-scrollbar {
+  display: flex; /* Keeps items in a row if multiple deals */
+  gap: var(--spacing-lg);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-md);
+  /* justify-content: center; */ /* Remove this to allow left alignment if only one item */
+}
+
+.showcase-container { /* This wraps each individual deal item */
+  flex: 0 0 auto; /* Prevent shrinking/growing if multiple deals */
+  max-width: 700px; /* Max width for a single deal item container, adjust as needed */
+  /* margin: 0 auto; */ /* Remove this to allow left alignment */
+  width: 100%; /* Allow it to take available width up to max-width */
+}
+
+.product-featured .showcase {
+  display: flex; /* Key for two-column layout */
+  flex-direction: row; /* Image on left, content on right */
+  align-items: stretch; /* Make banner and content same height */
+  background-color: var(--deal-content-bg); /* Light pink background for the content box */
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-medium);
+  overflow: hidden; /* Ensure rounded corners are applied */
+  padding: var(--spacing-md); /* Add some padding around the deal item */
+}
+
+.product-featured .showcase-banner {
+  flex-basis: 40%; /* Image takes up 40% of the width */
+  flex-shrink: 0; /* Prevent image container from shrinking */
+  margin-right: var(--spacing-lg); /* Space between image and text content */
+  display: flex; /* To help center image if needed, or control its size */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure image respects border radius if any */
+  min-height: 250px; /* Ensure a minimum height for the image area */
+}
+
+.product-featured .showcase-img {
+  width: 100%;
+  height: 100%; /* Make image fill the banner height */
+  object-fit: cover; /* Cover the area, might crop */
+  border-radius: var(--border-radius-sm); /* Rounded corners for image */
+}
+
+.product-featured .showcase-content {
+  flex-basis: 60%; /* Text content takes up 60% of the width */
+  text-align: left; /* Align text to the left */
+  padding: var(--spacing-sm) 0; /* Adjust padding if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+}
+
+.product-featured .showcase-content .showcase-title { /* Deal Title */
+  font-size: 1.4rem; /* Adjusted from 1.5rem */
+  font-weight: bold;
+  color: var(--text-color-dark);
+  margin-bottom: var(--spacing-sm);
+  text-align: left; /* Ensure title is left aligned */
+  min-height: 0; /* Reset min-height if not needed */
+  -webkit-line-clamp: unset; /* Remove line clamp for deal title */
+  line-height: 1.3;
+}
+
+.product-featured .showcase-desc { /* Deal Description */
+  font-size: 0.9rem; /* Adjusted from 0.95rem */
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+  min-height: 0; /* Reset min-height */
+  -webkit-line-clamp: unset; /* Remove line clamp */
+}
+
+.product-featured .price-box { /* Prices for Deal */
+  justify-content: flex-start; /* Align prices to the left */
+  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem; /* Adjusted from 1.2rem */
+}
+.product-featured .price-box .price {
+    color: var(--primary-color); /* Keep current price pink */
+    font-size: 1.3rem; /* Emphasize current price, adjusted from 1.4rem */
+    font-weight: bold;
+}
+.product-featured .price-box del {
+    font-size: 1rem; /* Original price size, adjusted from 1.1rem */
+    color: var(--text-color-light);
+    margin-left: var(--spacing-sm);
+}
+
+
+.product-featured .add-cart-btn { /* "View detail" or "Buy Now" button */
+  display: inline-block; /* Allow setting width and padding */
+  width: auto; /* Auto width based on content */
+  text-align: center;
+  margin-top: var(--spacing-sm); /* Adjust margin */
+  margin-bottom: var(--spacing-md);
+  background-color: var(--deal-button-bg); /* Yellow background */
+  color: var(--deal-button-text) !important; /* Dark text, added !important for specificity */
+  font-weight: bold;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-decoration: none; /* Ensure it looks like a button if it's an <a> tag */
+}
+.product-featured .add-cart-btn:hover {
+  background-color: darken(var(--deal-button-bg), 10%);
+  color: var(--deal-button-text) !important;
+}
+
+.product-featured .showcase-status {
+  margin-top: var(--spacing-md);
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+  text-align: left;
+}
+.product-featured .showcase-status .wrapper {
+  display: flex;
+  justify-content: flex-start; /* Align stats to the left */
+  gap: var(--spacing-lg); /* Space between sold and available stats */
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Responsive adjustments for Deal of the Day */
+@media (max-width: 992px) {
+  .product-featured .showcase {
+    flex-direction: column; /* Stack image and content on smaller tablets */
+    align-items: center; /* Center items when stacked */
+  }
+  .product-featured .showcase-banner {
+    flex-basis: auto; /* Reset flex-basis */
+    width: 60%; /* Control image width when stacked */
+    max-width: 300px; /* Max image width when stacked */
+    margin-right: 0;
+    margin-bottom: var(--spacing-md);
+    min-height: 200px; /* Adjust min-height for stacked view */
+  }
+  .product-featured .showcase-content {
+    flex-basis: auto; /* Reset flex-basis */
+    text-align: center; /* Center text when stacked */
+    width: 100%; /* Take full width when stacked */
+  }
+  .product-featured .price-box {
+    justify-content: center; /* Center prices when stacked */
+  }
+  .product-featured .showcase-status .wrapper {
+    justify-content: center; /* Center stats when stacked */
+  }
+   .product-featured .add-cart-btn {
+    display: block; /* Make button full width when stacked */
+    width: 100%;
+    max-width: 250px; /* Limit button width */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-featured .showcase-banner {
+    width: 80%; /* Adjust image width for very small screens */
+    min-height: 180px;
+  }
+  .product-featured .showcase-content .showcase-title {
+    font-size: 1.2rem; /* Slightly smaller title on mobile */
+  }
+   .product-featured .price-box .price {
+    font-size: 1.2rem;
+  }
+  .product-featured .price-box del {
+    font-size: 0.9rem;
+  }
+}
+
+==========================================================================
+   6. Sidebar Styles (`includes/categorysidebar.php`) - Basic
+   ========================================================================== */
+.sidebar {
+  /* Basic styling for sidebar if it's visible on desktop for index.php */
+  /* Your current index.php doesn't seem to display it prominently on desktop */
+  /* These styles are more for when it's used as a mobile menu or on category pages */
+  padding: var(--spacing-md);
+  background-color: var(--background-soft);
+  border-radius: var(--border-radius-md);
+}
+.sidebar-category {
+  margin-bottom: var(--spacing-lg);
+}
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.sidebar-close-btn { /* For mobile */
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-color-dark);
+}
+.sidebar-menu-category-list .sidebar-menu-category {
+  margin-bottom: var(--spacing-sm);
+}
+.sidebar-accordion-menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: var(--spacing-sm) 0;
+  text-align: left;
+  color: var(--text-color-dark);
+  font-weight: 500;
+}
+.sidebar-accordion-menu .menu-title-flex { /* If needed for icon alignment */
+}
+.sidebar-accordion-menu .add-icon, .sidebar-accordion-menu .remove-icon {
+  font-size: 1.2rem;
+}
+.sidebar-accordion-menu .remove-icon { display: none; }
+.sidebar-accordion-menu.active .add-icon { display: none; }
+.sidebar-accordion-menu.active .remove-icon { display: block; }
+
+.sidebar-submenu-category-list {
+  padding-left: var(--spacing-md);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.sidebar-accordion-menu.active + .sidebar-submenu-category-list {
+  max-height: 500px; /* Adjust as needed */
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+}
+.sidebar-submenu-category .sidebar-submenu-title {
+  display: block;
+  padding: var(--spacing-xs) 0;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  background: none; /* If it's a button */
+  border: none;     /* If it's a button */
+  width: 100%;      /* If it's a button */
+  text-align: left; /* If it's a button */
+}
+.sidebar-submenu-category .sidebar-submenu-title:hover {
+  color: var(--primary-color);
+}
+
+
+/* ==========================================================================
+   7. Footer Styles (`includes/footer.php`)
+   ========================================================================== */
+footer {
+  background-color: var(--text-color-dark); /* Dark footer */
+  color: #E0E0E0; /* Light text on dark background */
+  padding: var(--spacing-xl) 0 var(--spacing-md) 0;
+  margin-top: var(--spacing-xl);
+}
+.footer-nav {
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid #444; /* Separator within footer */
+}
+.footer-nav .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+.footer-nav-list .nav-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: var(--spacing-md);
+}
+.footer-nav-item .footer-nav-link {
+  display: block;
+  color: #BDBDBD; /* Lighter grey for links */
+  font-size: 0.9rem;
+  padding: var(--spacing-xs) 0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.footer-nav-item .footer-nav-link:hover {
+  color: white;
+  padding-left: var(--spacing-sm);
+}
+.footer-nav-item.flex { /* For contact items with icons */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.footer-nav-item .icon-box {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+.social-link { /* For social icons in footer */
+  display: flex;
+  gap: var(--spacing-md);
+}
+.social-link .footer-nav-item .footer-nav-link {
+  font-size: 1.3rem; /* Larger social icons */
+}
+
+.footer-bottom {
+  padding: var(--spacing-md) 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+.footer-bottom .copyright a {
+  color: white;
+  font-weight: 500;
+}
+.footer-bottom .copyright a:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   8. Responsive Adjustments (Example Breakpoints)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .header-main .container {
+    /* Adjustments for tablet if needed */
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+  }
+  .banner-title {
+    font-size: 1.8rem;
+  }
+  .product-featured .showcase {
+    flex-direction: column; /* Stack image and content on smaller tablets */
+    align-items: center; /* Center items when stacked */
+  }
+  .product-featured .showcase-banner {
+    flex-basis: auto; /* Reset flex-basis */
+    width: 60%; /* Control image width when stacked */
+    margin-right: 0;
+    margin-bottom: var(--spacing-md);
+  }
+  .product-featured .showcase-content {
+    flex-basis: auto; /* Reset flex-basis */
+    text-align: center; /* Center text when stacked */
+  }
+  .product-featured .price-box {
+    justify-content: center; /* Center prices when stacked */
+  }
+  .product-featured .showcase-status .wrapper {
+    justify-content: center; /* Center stats when stacked */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop nav, rely on mobile nav */
+  .desktop-navigation-menu { display: none; }
+  /* Show mobile nav trigger if it's part of header-main or header-top */
+
+  .header-main .container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  .header-search-container {
+    padding: var(--spacing-md) 0;
+  }
+  .search-form {
+    max-width: 100%;
+  }
+
+  .banner-img {
+    height: 300px;
+  }
+  .banner-content {
+    padding: var(--spacing-md);
+  }
+  .banner-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-nav .container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 576px) {
+  .header-top .container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  .product-grid {
+    grid-template-columns: 1fr; /* 1 column on small mobile */
+  }
+  .showcase-content {
+    padding: var(--spacing-sm);
+  }
+  .showcase-title {
+    font-size: 0.9rem;
+    min-height: 2.2em;
+  }
+  .price-box {
+    font-size: 1rem;
+  }
+  .product-featured .title, .product-main .title {
+    font-size: 1.5rem;
+  }
+  .footer-nav .container {
+    grid-template-columns: 1fr; /* Stack footer columns */
+    text-align: center;
+  }
+  .footer-nav-list .nav-title {
+    margin-top: var(--spacing-md);
+  }
+  .footer-nav-item.flex {
+    justify-content: center;
+  }
+  .social-link {
+    justify-content: center;
+  }
+  .product-featured .showcase-banner {
+    width: 80%; /* Adjust image width for very small screens */
+  }
+  .product-featured .showcase-content .showcase-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Specific styles for view-details page elements if they use style-prefix */
+/* (These were in your original style-prefix.css for view-details) */
+.product_deatail_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-light);
+}
+.product_image_box {
+  flex: 1 1 300px; /* Allow shrinking but base width 300px */
+  max-width: 45%; /* Limit width */
+  /* Styles from product.php for magnifier can be integrated here or kept separate */
+}
+.product_detail_box {
+  flex: 1 1 350px;
+  padding-left: var(--spacing-md);
+}
+.product-detail-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+.prouduct_information .product_description {
+  display: flex;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.95rem;
+}
+.prouduct_information .product_title {
+  font-weight: 600;
+  width: 80px; /* Fixed width for labels */
+  flex-shrink: 0;
+}
+.prouduct_information .product_detail {
+  flex-grow: 1;
+}
+.product_counter_box {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+.product_counter_btn_box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+.btn_product_increment, .btn_product_decrement {
+  background-color: var(--background-soft);
+  color: var(--text-color-dark);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1.2rem;
+}
+.btn_product_increment:hover, .btn_product_decrement:hover {
+  background-color: var(--border-color);
+}
+.input_product_quantity {
+  width: 50px;
+  text-align: center;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: none;
+  border-bottom: none;
+  padding: var(--spacing-sm) 0;
+  outline: none;
+}
+.btn_product_cart {
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius-sm);
+}
+.btn_product_cart:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
+/* Cart Card Design - Basic styles from cart-card-design.css */
+.cart-card {
+  /* Styles for cart items if displayed on index or other pages */
+}
+
+/* About Us & Contact - Basic placeholder styles from their CSS files */
+.about-section, .contact-section {
+  padding: var(--spacing-xl) 0;
+}

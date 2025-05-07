@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taylor Swift - The Tortured Poets Department</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Background is now handled by Tailwind classes */
+        }
+        /* Style for the play button overlay */
+        .play-button-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            width: 60px; /* Increased size slightly */
+            height: 60px; /* Increased size slightly */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .play-button-overlay:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 20px solid white;
+            margin-left: 5px; /* Adjust for centering */
+        }
+        /* Ensure SVGs in the list scale correctly */
+        .service-icon {
+             width: 2rem; /* w-8 */
+             height: 2rem; /* h-8 */
+             flex-shrink: 0; /* Prevent shrinking */
+        }
+    </style>
+</head>
+<body class=" text-white min-h-screen flex items-center justify-center p-4" style="background-color: #FFE4E1;">
+
+    <div class="w-full max-w-md mx-auto text-center">
+        <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-6 inline-block">
+            <img src="img/stream.jpg">
+        </div>
+
+        <h2 class="text-2xl font-bold mb-2 text-gray-900">SHORT N' SWEET</h2>
+        <p class="text-sm text-gray-600 mb-8">Choose music service</p>
+
+        <div class="bg-white rounded-lg shadow-md text-gray-800 overflow-hidden">
+            <ul class="divide-y divide-gray-200">
+                <li class="flex items-center justify-between p-3 hover:bg-gray-50 transition duration-150">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://placehold.co/32x32/000000/ffffff\\?text=SC" alt="Taylor Swift Logo" class="w-8 h-8 rounded service-icon">
+                        <span class="font-medium text-sm">Sabrina Capenter</span>
+                    </div>
+                    <a href="index.html" class="text-xs bg-pink-200 text-gray-700 hover:bg-gray-300 rounded px-3 py-1 font-semibold transition duration-150">Go To</a>
+                </li>
+                <li class="flex items-center justify-between p-3 hover:bg-gray-50 transition duration-150">
+                    <div class="flex items-center space-x-3">
+                        <svg class="service-icon" fill="#FA233B" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.01 6.295c-.703 0-1.52.37-2.18.966-.674.6-1.18 1.495-1.18 2.543 0 .21.016.41.045.603.03.19.06.36.06.36s-.207-.011-.45-.011c-1.1 0-2.11.39-2.83.95-.77.6-1.2 1.5-1.2 2.5 0 .03.001.06.003.09a.07.07 0 00.002.02c.002.03.005.06.005.09 0 1.68 1.1 3.3 2.6 4.3.7.48 1.5.78 2.3.78.2 0 .4-.02.6-.05.2-.03.4-.06.6-.09.7-.2 1.3-.4 1.8-.4s1.1.2 1.8.4c.2.03.4.06.6.09.2.03.4.05.6.05.8 0 1.6-.3 2.3-.78 1.5-1 2.6-2.62 2.6-4.3 0-.03.003-.06.005-.09a.07.07 0 00.002-.02c.002-.03.003-.06.003-.09 0-1-.43-1.9-1.2-2.5-.72-.56-1.73-.95-2.83-.95-.243 0-.45.011-.45.011s.03-.17.06-.36c.03-.193.045-.393.045-.603 0-1.048-.506-1.943-1.18-2.543-.66-.595-1.477-.965-2.18-.965zm6.3 1.765c.09.09.15.2.15.33 0 .1-.03.19-.09.26-.09.1-.2.15-.33.15-.1 0-.19-.03-.26-.09-.1-.09-.15-.2-.15-.33 0-.1.03-.19.09-.26.09-.1.2-.15.33-.15.1 0 .19.03.26.09z"/></svg>
+                        <span class="font-medium text-sm">Apple Music</span>
+                    </div>
+                    <a href="https://music.apple.com/us/artist/sabrina-carpenter/390647681" class="text-xs bg-pink-200 text-gray-700 hover:bg-gray-300 rounded px-3 py-1 font-semibold transition duration-150">Play</a>
+                </li>
+                <li class="flex items-center justify-between p-3 hover:bg-gray-50 transition duration-150">
+                    <div class="flex items-center space-x-3">
+                         <svg class="service-icon" fill="#00A3DA" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.95 16.79a9.43 9.43 0 00-2.97-7.27 9.47 9.47 0 00-13.42 0 9.43 9.43 0 00-2.97 7.27c-.1 1.42.07 2.86.5 4.22.2.65.45 1.28.76 1.88.07.13.18.2.32.2h19.68c.14 0 .25-.07.32-.2.3-.6.56-1.23.76-1.88.43-1.36.6-2.8.5-4.22zm-10.4-4.16c.5-.4 1.2-.6 2-.6s1.5.2 2 .6l1.1 1.1c.2.2.2.5 0 .7l-1.8 1.8c-.2.2-.5.2-.7 0l-1.6-1.6-1.6 1.6c-.2.2-.5.2-.7 0l-1.8-1.8c-.2-.2-.2-.5 0-.7l1.1-1.1zM12 24c-1.1 0-2.1-.2-3.1-.6-.4-.1-.6-.5-.5-.9s.5-.6.9-.5c1.8.6 3.7.6 5.5 0 .4-.1.8.1.9.5s-.1.8-.5.9c-1 .4-2 .6-3.1.6zm-7.9-1.6c-.4 0-.7-.2-.9-.6-.6-1.3-1-2.7-1.1-4.1-.1-1.7.2-3.4.8-5 .3-.8.7-1.5 1.3-2.1.2-.2.5-.2.7 0s.2.5 0 .7c-.5.6-1 1.2-1.2 1.9-.6 1.5-.8 3.1-.8 4.7 0 1.3.3 2.6.9 3.8.2.3 0 .7-.3.9-.1.1-.3.1-.4.1z"/></svg>
+                         <span class="font-medium text-sm">Amazon Music</span>
+                    </div>
+                    <a href="https://music.amazon.com/artists/B0041P77O2/sabrina-carpenter" class="text-xs bg-pink-200 text-gray-700 hover:bg-gray-300 rounded px-3 py-1 font-semibold transition duration-150">Play</a>
+                </li>
+                <li class="flex items-center justify-between p-3 hover:bg-gray-50 transition duration-150">
+                    <div class="flex items-center space-x-3">
+                        <svg class="service-icon" fill="#1DB954" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.08 17.396c-.205.33-.6.45-.93.246-2.73-1.68-6.18-2.06-10.26-.99-.39.1-.78-.12-.88-.51-.1-.39.12-.78.51-.88 4.47-1.17 8.31-.73 11.37 1.17.33.2.45.6.25.93zm.89-2.31c-.25.405-.75.54-1.155.285-3.03-1.86-7.65-2.37-11.19-.99-.48.18-.99-.105-1.17-.585-.18-.48.105-.99.585-1.17 3.99-1.53 9.03-1.02 12.45 1.08.405.255.54.75.285 1.155zm.105-2.445C19.125 12.3 8.97 12.03 5.37 13.14c-.57.18-1.17-.15-1.35-.72-.18-.57.15-1.17.72-1.35C8.52 9.96 19.5 10.245 23.1 12.81c.495.345.66.975.315 1.47-.345.495-.975.66-1.47.315z"/></svg>
+                        <span class="font-medium text-sm">Spotify</span>
+                    </div>
+                    <a href="https://open.spotify.com/artist/74KM79TiuVKeVCqs8QtB0B" class="text-xs bg-pink-200 text-gray-700 hover:bg-gray-300 rounded px-3 py-1 font-semibold transition duration-150">Play</a>
+                </li>
+                <li class="flex items-center justify-between p-3 hover:bg-gray-50 transition duration-150">
+                    <div class="flex items-center space-x-3">
+                        <svg class="service-icon" fill="#FF0000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2.1 15.3V8.7c0-.4.3-.7.7-.7s.7.3.7.7v6.6c0 .4-.3.7-.7.7s-.7-.3-.7-.7zm4.2 0V8.7c0-.4.3-.7.7-.7s.7.3.7.7v6.6c0 .4-.3.7-.7.7s-.7-.3-.7-.7zM9.75 5.484c1.08-.48 2.25-.743 3.45-.743 1.2 0 2.37.264 3.45.743.495.22.795.735.705 1.26-.09.525-.555.885-1.08.885H9.125c-.525 0-.99-.36-1.08-.885-.09-.525.21-1.04.705-1.26z"/></svg>
+                        <span class="font-medium text-sm">YouTube Music</span>
+                    </div>
+                    <a href="https://www.youtube.com/channel/UCPKWE1H6xhxwPlqUlKgHb_w" class="text-xs bg-pink-200 text-gray-700 hover:bg-gray-300 rounded px-3 py-1 font-semibold transition duration-150">Play</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

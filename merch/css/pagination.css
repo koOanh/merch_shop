@@ -1,0 +1,56 @@
+.main-pagination {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center the content (the ul) horizontally */
+    margin-top: 20px; /* Add some space above the pagination */
+    /* The inline margin-left from the original PHP is removed
+       as it conflicts with centering. Add margin here if needed globally. */
+}
+
+/* The unordered list holding the page numbers */
+.pagination-ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Arrange list items in a row */
+    gap: 8px; /* Add space between page number items */
+}
+
+/* Individual list item (optional, mostly for structure) */
+.page-item-number {
+    /* No specific styles needed here unless you want margins/padding
+       on the li itself, but gap on the ul is often cleaner */
+}
+
+/* Styling for the page number links */
+.page-number-link {
+    display: block; /* Make the link fill its container (li) */
+    padding: 8px 15px; /* Add padding inside the link */
+    text-decoration: none; /* Remove underline from links */
+    color: #c73776; /* Pink text color */
+    background-color: #fce4ec; /* Light pink background */
+    border: 1px solid #f8bbd0; /* Slightly darker pink border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Hover effect for page number links */
+.page-number-link:hover {
+    background-color: #f48fb1; /* Medium pink background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Style for the link of the currently active page */
+.page-item-number.page-active .page-number-link {
+    background-color: #d81b60; /* Darker pink background for active page */
+    color: #ffffff; /* White text for active page */
+    border-color: #d81b60; /* Even darker border for active page */
+    font-weight: bold; /* Make active page number bold */
+    cursor: default; /* Change cursor as it's the current page */
+}
+
+/* Optional: Prevent hover effect on the active page link */
+.page-item-number.page-active .page-number-link:hover {
+     background-color: #ad1457; /* Keep active background on hover */
+     color: #ffffff; /* Keep active text color on hover */
+}
